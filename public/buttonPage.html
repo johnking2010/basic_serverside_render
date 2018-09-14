@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<title>Multitouch app</title>
+  <head>
+      <h2 class="title">Android Application Screenshots:</h2>
+          <!-- internal css-->
+          <style>
+
+              body {
+                background:slategray;
+                opacity: 0.8;
+              }
+              
+              .title {
+                color:rgba(228, 226, 226, 0.818);
+                background: inherit;
+                padding: 4px;
+              }
+
+              /* #durationBar {
+                border: solid 1px black;
+                width: 100%;
+                margin-bottom: 5px;
+              } */
+
+              /* #positionBar {
+                height: 30px;
+                color: white;
+                font-weight: bold;
+                background: steelblue;
+                text-align: center;
+              } */
+
+              img {
+                /* max-width: 100%; */
+                height: auto;
+                max-width: 500px;
+                /* height: 200px; */
+
+                /* scale without stretch option below: */
+                object-fit: scale-down;
+                positon: relative;
+                float: left;
+                background-position: 50% 50%;
+                background-repeat: no-repeat;
+                background-size: cover;
+                padding: 4px;
+                opacity: 1.0;
+              }
+
+              .dcell {
+                width: 100%;
+                margin-bottom: 2px;
+                opacity: 0.9;
+              }
+
+              .grow {
+                transition: all .2s ease-in-out;
+
+              }
+              .grow:hover {
+                transform: scale(1.2);
+                float: center;
+              }
+
+          </style>
+      <!--<script src="myStuff.js"></script>-->
+      <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+      <!-- <script src="jquery-3.2.1.js"></script> -->
+  </head>
+
+
+<body>
+
+
+    <div id="screenshotDiv" class="dcell">
+      <script>
+      $(function() {
+            console.log('Screenshots loading...');
+            var newArray = [];
+            // WORKS:
+            $.get("/list", function(data) {
+            // TODO - check that file is NOT beginning with a '.' --->
+            // TODO check the MIME type...
+
+
+              console.log('length of list= ' + data.length + ', files: ' + data);
+
+
+              data.forEach(function(file) {
+                console.log('forEach iteration: ' + file);
+                // works - hardcoded inline style tho...
+                  //console.log('string at index 9: ' + file[9]);
+                // ---  SAFEGUARD AGINST HIDDEN FILES:
+                if(file[9] == '.') {
+                   // begins with '.' - IGNORE
+                } else {
+                   // make html:
+                   // $('<img src='+'"'+file+'"'+' alt=' +'"'+'HTML5 Icon'+'"'+ 'style='+'"'+'width:auto;height:auto;'+'"'+'>').appendTo('body');
+                   // test:
+                   $('<img '+ 'class= ' +'"grow"'+ ' src= '+'"'+file+'"'+' alt=' +'"'+'HTML5 Icon'+'"'+'>').appendTo('#screenshotDiv');
+                   //
+                   return newArray.push(file);
+                }
+              });
+            });
+            //e.preventDefault();
+      });
+      </script>
+    </div>
+</body>
+</html>

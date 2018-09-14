@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en-GB">
+
+
+
+<title>Android App - screenshots</title>
+<head>
+    <h2>Items:</h2>
+        <!-- internal css-->
+        <style>
+            #durationBar {
+              border: solid 1px black;
+              width: 100%;
+              margin-bottom: 1px;
+            }
+
+            #positionBar {
+              height: 30px;
+              color: white;
+              font-weight: bold;
+              background: steelblue;
+              text-align: center;
+            }
+
+            img {
+              width:97%;
+              height: 50%;
+              text-align: center;
+              filter: grayscale(100%);
+              padding: 10px;
+            }
+
+            label {
+              color: #7f7f7f;
+              width: 100%;
+              font-weight: bold;
+              font-size: 48;
+              margin-bottom: 1px;
+            }
+
+        </style>
+
+        <link rel="stylesheet" href="styles/custom-popup-mk1.css">
+        <script src="src/CustomPopUpMk2.js"></script>
+    <!--<script src="myStuff.js"></script>-->
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.js"></script> -->
+    <script src="jquery-3.2.1.js"></script>
+</head>
+
+
+<body>
+    <label for="something">News:</label>
+    <!-- <input id="something" type="range" min="0.01" max="1.0" value="0.05"><br> -->
+  <br>
+
+    <!-- <img id="placeholder" alt="HTML5 Icon" style="width:auto;height:auto;"> -->
+
+    <script>
+      var imagePathArray = [];
+      //
+      var newSrcPath = $('#placeholder').attr("src");// returns a jQuery wrapped object
+      // You can get the underlying DOM object from a jQuery object by writing $('#id')[0].
+      console.log(imagePathArray);
+    //   var loc = $(this).attr("src");
+    // $('#image-zoom').attr("src",loc);
+    </script>
+
+
+    <!-- box-->
+    <div id="myBackground">
+      <div id="dialogBox">
+        <div id="dialog-header">John King</div>
+        <div id="dialog-body">axis:</div>
+        <div id="dialog-footer">
+          <button onclick="CustomPopUpMk2.dialogInput()">Multitouch Android application screenshots</button>
+        </div>
+        <div id="dialog-text-rhs">[2015]</div>
+        <br>
+        <img src="./images/VeniceMarketChillis_IMG_1092.JPG" alt="HTML5 Icon">
+      </div>
+    </div>
+
+    <script> CustomPopUpMk2.showDialog(); </script>
+
+</body>
+
+</html>
