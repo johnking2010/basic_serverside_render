@@ -2,9 +2,9 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 
-<title>Multitouch app</title>
+<title>Simple image display [server-rendered HTML]</title>
   <head>
-      <h2 class="title">'axis' Android Application Screenshots:</h2>
+      <h2 class="title">'Axis' Android Application Screenshots:</h2>
           <!-- internal css-->
           <style>
               body {
@@ -19,11 +19,8 @@
               }
 
               img {
-                /* max-width: 100%; */
-                /* height: auto; */
                 max-width: auto;
                 height: 250px;
-
                 /* scale without stretch option below: */
                 object-fit: scale-down;
                 position: relative;
@@ -50,60 +47,26 @@
                 transform: scale(1.3);
                 float: center;
                 opacity: 1.0;
-                /* margin-left: 5%;  */
               }
-              /* 
-              .grow:active {
-                transform: scale(1.3);
-                float: center;
-                opacity: 1.0; 
-              } 
-              */
-
           </style>
-      <!--<script src="myStuff.js"></script>-->
       <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-      <!-- <script src="jquery-3.2.1.js"></script> -->
   </head>
 
-
-<body>
-
-
-    <div id="screenshotDiv" class="dcell">
-      <script>
-      $(function() {
-            console.log('Screenshots loading...');
-            var newArray = [];
-            // WORKS:
-            $.get("/list", function(data) {
-            // TODO - check that file is NOT beginning with a '.' --->
-            // TODO check the MIME type...
-
-
-              //console.log('length of list= ' + data.length + ', files: ' + data);
-
-
-              data.forEach(function(file) {
-                //console.log('forEach iteration: ' + file);
-                // works - hardcoded inline style tho...
-                  //console.log('string at index 9: ' + file[9]);
-                // ---  SAFEGUARD AGINST HIDDEN FILES:
-                if(file[9] == '.') {
-                   // begins with '.' - IGNORE
-                } else {
-                   // make html:
-                   // $('<img src='+'"'+file+'"'+' alt=' +'"'+'HTML5 Icon'+'"'+ 'style='+'"'+'width:auto;height:auto;'+'"'+'>').appendTo('body');
-                   // test:
-                   $('<img '+ 'class= ' +'"grow"'+ ' src= '+'"'+file+'"'+' alt=' +'"'+'HTML5 Icon'+'"'+'>').appendTo('#screenshotDiv');
-                   //
-                   return newArray.push(file);
-                }
+  <body>
+      <div id="screenshotDiv" class="dcell">
+        <script>
+        $(function() {
+              console.log('Screenshots loading...');
+              var newArray = [];
+              // WORKS:
+              $.get("/list", function(data) {
+                data.forEach(function(file) {
+                    $('<img '+ 'class= ' +'"grow"'+ ' src= '+'"'+file+'"'+' alt=' +'"'+'HTML5 Icon'+'"'+'>').appendTo('#screenshotDiv');
+                    return newArray.push(file);
+                });
               });
-            });
-            //e.preventDefault();
-      });
-      </script>
-    </div>
-</body>
+        });
+        </script>
+      </div>
+  </body>
 </html>
