@@ -15,4 +15,6 @@ serving static .JPG assets dynamically from Node
   - npm install
   - npm start
   - navigate to http://localhost:3001 
+  - [FTP access via: .../images]
+  - [Text List of served files .../list]
  ---
